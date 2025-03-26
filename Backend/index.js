@@ -13,13 +13,18 @@ yargs(hideBin(process.argv)).command("init","initialise a new repository",{},ini
       description: "The file to add to the staging area",
       type: "string",
     });
-  }, addRepo)
+  }, (argv)=>{
+     addRepo(argv.file);
+  })
 .command("commit <message>","commit a staged file",(yargs) => {
     yargs.positional("message", {
       description: "commit message",
       type: "string",
     });
-  },commitRepo)
+  },(argv)=>{
+    commitRepo(argv.message);
+ })
+
 .command("push","push commits to S3",{},pushRepo)
 .command("pull","pull commits from S3",{},pullRepo)
 .command("revert <revertID>","revert to a specific  commit",(yargs) => {
