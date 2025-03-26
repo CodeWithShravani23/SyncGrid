@@ -6,7 +6,6 @@ async function initRepo() {
     const repoPath = path.resolve(process.cwd(), ".SyncGrid");
     const commitsPath = path.join(repoPath, "commits");
 
-
     try {
         await fs.mkdir(repoPath,{recursive:true});
         await fs.mkdir(commitsPath,{recursive:true});
